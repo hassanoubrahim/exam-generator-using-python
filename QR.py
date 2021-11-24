@@ -9,7 +9,7 @@ print ( "Chargement des Qestions et Reponses ...")
 q = "Quand le terme ≪ Intelligence Artificielle ≫ a-t-il été fondé?" 
 choix=['années 1930','années 1960', 'années 1990','années 2000']  
 rep = [False, True, False, False] 
-qr = nouvelleQR(q, choix, rep)  
+qr = nouvelleQR(q, choix, rep) 
 ajouterQR(qr) 
 #==============================================================================
 q = "Qu'est-ce que l'intelligence artificielle?"

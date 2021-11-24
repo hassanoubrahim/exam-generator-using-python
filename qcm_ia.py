@@ -2,7 +2,6 @@
 
 import copy, sys
 from random import  shuffle
-
 #liste de questions et leurs réponses
 QR = []
 
@@ -45,34 +44,31 @@ while do == 'y':
         break # stops the loop when n is valid
     else:
         lqr = ordreAleatoire(n)
+        good_ans = []
+        user_ans = []
         for qr in lqr:
             print("=================================================================")
             print(qr[0])
             for i in range(len(qr[1])):
                 print("[{}] : {}".format(i, qr[1][i] ))
-            rep=input("Votre choix (plusieurs reponses sont possibes ex:0 2): ")
-            liste_rep=  rep.split(' ')
-            nb_true_rep=qr[2].count(True)
-            sub_score=0.0
-            good_ans=set([i for i, e in enumerate(qr[2]) if e == True])
-            for r in liste_rep:
-                try:
-                    j = int(r)
-                    good_ans.append(j)
-                    if qr[2][j] : 
-                        sub_score=sub_score + 1.0/nb_true_rep 
-                except : continue
-            if  sub_score != 1:
-                print("-----------------------/ \----------------------------------------")
-                print("----------------------/ ! \---------------------------------------")
-                print("Votre réponse est incorrecte! la bonne réponse est : ", good_ans)
-                print("-----------------------------------------------------------------")
-            score +=sub_score 
-    print("Votre score={:.2f}%".format((score/n)*100)) 
-    do = str(input("Continuez?(y/n): "))
+            rep=int(input("Votre choix (plusieurs reponses sont pas possibes ex:2): "))
+            user_ans.append(rep)
+            for i in range(len(qr[2])):
+                if qr[2][i] == True:
+                    good_ans.append(i)
+        score = 0
+        #print('good ansers', good_ans, 'user ansers:', user_ans)
+        for i in range(n):
+            if good_ans[i] == user_ans[i]:
+                score += 1
+        print('votre score est : ', float(score/n))
+        do = str(input("Continuez?(y/n): "))
+
+print('thanks for taking this exam')
+                    
 
 
-print("Thank you and good luck in the exam!")
-         
-             
+
+
+
 
